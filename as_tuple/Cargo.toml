@@ -1,0 +1,14 @@
+[package]
+name = "as_tuple"
+version = "0.1.0"
+authors = ["Francesca Plebani <francesca@brainiumstudios.com>"]
+edition = "2018"
+description = "View any struct as a tuple! ✨"
+documentation = "https://docs.rs/as_tuple"
+repository = "https://github.com/francesca64/as_tuple"
+readme = "README.md"
+keywords = ["tuple", "derive"]
+license = "Apache-2.0/MIT"
+
+[dependencies]
+as_tuple_derive = { version = "0.1", path = "../as_tuple_derive" }

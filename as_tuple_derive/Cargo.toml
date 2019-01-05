@@ -1,0 +1,19 @@
+[package]
+name = "as_tuple_derive"
+version = "0.1.0"
+authors = ["Francesca Plebani <francesca@brainiumstudios.com>"]
+edition = "2018"
+description = "Don't use this crate directly. It's re-exported by as_tuple!"
+documentation = "https://docs.rs/as_tuple"
+repository = "https://github.com/francesca64/as_tuple"
+readme = "README.md"
+keywords = ["tuple", "derive"]
+license = "Apache-2.0/MIT"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "0.4"
+quote = "0.6"
+syn = "0.15"
