@@ -3,8 +3,7 @@ extern crate proc_macro;
 use proc_macro2::TokenStream;
 use quote::quote;
 use syn::{
-    Data, DeriveInput, Fields, Generics, GenericParam, Ident,
-    parse_macro_input, parse_quote,
+    Data, DeriveInput, Fields, GenericParam, Generics, Ident, Index, parse_macro_input, parse_quote
 };
 
 #[proc_macro_derive(AsTuple)]
@@ -100,10 +99,13 @@ fn tuple_gen(data: &Data, options: TupleOptions) -> TokenStream {
                             TupleOptions::Binding => {
                                 quote! { field_#i }
                             },
-                            TupleOptions::Ref { mutable } => if !mutable {
-                                quote! { &self.#i }
-                            } else {
-                                quote! { &mut self.#i }
+                            TupleOptions::Ref { mutable } => {
+                                let i = Index::from(i);
+                                if !mutable {
+                                    quote! { &self.#i }
+                                } else {
+                                    quote! { &mut self.#i }
+                                }
                             },
                         });
                     quote! { (#(#recurse),*) }
